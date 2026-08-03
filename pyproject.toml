@@ -1,0 +1,11 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "marketinsight-history"
+version = "0.1.0"
+dependencies = [
+    "azure-cosmos>=4.0",
+    "python-dotenv>=1.0",
+]
