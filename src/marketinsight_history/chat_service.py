@@ -40,3 +40,8 @@ def add_message(user_id: str, chat_id: str, role: str, content: str):
     chat = container.read_item(item=chat_id, partition_key=user_id)
     chat["messages"].append({"role": role, "content": content})
     container.upsert_item(chat)
+
+# チャットの会話履歴を取得する
+def get_messages(user_id: str, chat_id: str):
+    chat = container.read_item(item=chat_id, partition_key=user_id)
+    return [{"role": m["role"], "content": m["content"]} for m in chat.get("messages", [])]
